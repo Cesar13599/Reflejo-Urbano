@@ -3,145 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Optimización para Chrome y navegadores modernos -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-control" content="no-cache">
+
   <title>Reflejo Urbano</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
       color: #333;
     }
 
-    /* Portada con el logo */
-    .portada {
-      height: 100vh;
-      background: linear-gradient(to bottom right, #7b2ff7, #f107a3);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* Portada con logo */
+    header {
+      background: linear-gradient(to bottom, #222, #444);
       color: white;
       text-align: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+    header img {
+      max-width: 200px;
+      margin-bottom: 20px;
       animation: fadeIn 2s ease-in-out;
     }
-
-    .portada img {
-      width: 220px;
-      height: auto;
-      border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      animation: bounce 2s infinite;
+    header h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 0;
     }
 
-    .portada h1 {
-      margin-top: 20px;
-      font-size: 2.5em;
+    /* Productos */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+    .producto {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    .producto img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .producto h3 {
+      margin: 15px;
+      font-size: 1.3rem;
+    }
+    .info {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      transition: bottom 0.4s;
+    }
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .producto:hover .info {
+      bottom: 0;
     }
 
-    .portada p {
-      font-size: 1.2em;
-      margin-top: 10px;
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
 
     /* Animaciones */
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    @keyframes bounce {
-      0%, 100% {transform: translateY(0);}
-      50% {transform: translateY(-15px);}
-    }
-
-    /* Sección de productos */
-    .productos {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .productos h2 {
-      margin-bottom: 30px;
-      font-size: 2em;
-      color: #7b2ff7;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .producto {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-
-    .producto:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .producto img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .producto h3 {
-      margin: 15px 0 10px;
-      font-size: 1.3em;
-      color: #333;
-    }
-
-    .producto p {
-      font-size: 0.95em;
-      color: #666;
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Portada -->
-  <section class="portada">
+  <!-- Portada con logo -->
+  <header>
     <img src="img/logo.jpg" alt="Logo Reflejo Urbano">
     <h1>Reflejo Urbano</h1>
-    <p>Belleza que refleja lo mejor de ti</p>
-  </section>
+    <p>Transforma tu estilo con nuestros productos premium</p>
+  </header>
 
   <!-- Sección de productos -->
   <section class="productos">
-    <h2>Nuestros Productos</h2>
-    <div class="grid">
-      <div class="producto">
-        <img src="img/shampoo.jpg" alt="Shampoo">
-        <h3>Shampoo</h3>
-        <p>Limpieza profunda y brillo natural.</p>
-      </div>
-      <div class="producto">
-        <img src="img/acondicionador.jpg" alt="Acondicionador">
-        <h3>Acondicionador</h3>
-        <p>Suavidad, hidratación y control.</p>
-      </div>
-      <div class="producto">
-        <img src="img/mascarilla.jpg" alt="Mascarilla Nutritiva">
-        <h3>Mascarilla Nutritiva</h3>
-        <p>Repara y fortalece desde la raíz.</p>
-      </div>
-      <div class="producto">
-        <img src="img/spray.jpg" alt="Spray Capilar">
-        <h3>Spray Capilar</h3>
-        <p>Fijación ligera con brillo saludable.</p>
-      </div>
+    <div class="producto">
+      <img src="img/shampoo.jpg" alt="Shampoo">
+      <h3>Shampoo Revitalizante</h3>
+      <div class="info">Limpieza profunda y frescura todo el día.</div>
+    </div>
+    <div class="producto">
+      <img src="img/acondicionador.jpg" alt="Acondicionador">
+      <h3>Acondicionador Nutritivo</h3>
+      <div class="info">Cabello suave, manejable y lleno de vida.</div>
+    </div>
+    <div class="producto">
+      <img src="img/mascarilla.jpg" alt="Mascarilla">
+      <h3>Mascarilla Reparadora</h3>
+      <div class="info">Recupera la fuerza y brillo de tu cabello.</div>
+    </div>
+    <div class="producto">
+      <img src="img/spray.jpg" alt="Spray">
+      <h3>Spray Fijador</h3>
+      <div class="info">Control y estilo duradero sin maltratar.</div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Reflejo Urbano - Todos los derechos reservados</p>
+  </footer>
 
 </body>
 </html>

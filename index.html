@@ -3,95 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Optimización para Chrome y navegadores modernos -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Cache-control" content="no-cache">
-
-  <title>Reflejo Urbano</title>
+  <title>Reflejo Urbano - Brillo Urbano</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      margin: 0;
+      background: #f4f4f4;
       color: #333;
     }
 
     /* Portada con logo */
-    header {
-      background: linear-gradient(to bottom, #222, #444);
+    .hero {
+      background: linear-gradient(135deg, #000000, #444444);
       color: white;
       text-align: center;
       padding: 60px 20px;
-      position: relative;
-    }
-    header img {
-      max-width: 200px;
-      margin-bottom: 20px;
       animation: fadeIn 2s ease-in-out;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 10px 0;
+    .hero img {
+      width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      animation: float 3s ease-in-out infinite;
     }
-    header p {
-      font-size: 1.2rem;
+    .hero h1 {
       margin: 0;
+      font-size: 2.8em;
+    }
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.3em;
     }
 
     /* Productos */
-    .productos {
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 40px 20px;
     }
-    .producto {
+    .product {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
-    .producto img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: block;
-    }
-    .producto h3 {
-      margin: 15px;
-      font-size: 1.3rem;
-    }
-    .info {
-      position: absolute;
-      bottom: -100%;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.8);
-      color: white;
       padding: 15px;
+      border-radius: 10px;
       text-align: center;
-      font-size: 0.9rem;
-      transition: bottom 0.4s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
-    .producto:hover {
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .product img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .product:hover img {
       transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .producto:hover .info {
-      bottom: 0;
+    .product h2 {
+      margin: 15px 0 10px;
     }
 
-    /* Footer */
+    /* Popup (modal) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .modal-content img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #555;
+    }
+
     footer {
       background: #222;
-      color: #ddd;
+      color: white;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+      padding: 15px;
+      margin-top: 30px;
     }
 
     /* Animaciones */
@@ -99,45 +124,84 @@
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
 
   <!-- Portada con logo -->
-  <header>
-    <img src="img/logo.jpg" alt="Logo Reflejo Urbano">
+  <section class="hero">
+    <img src="logo.jpg" alt="Logo Reflejo Urbano">
     <h1>Reflejo Urbano</h1>
-    <p>Transforma tu estilo con nuestros productos premium</p>
-  </header>
-
-  <!-- Sección de productos -->
-  <section class="productos">
-    <div class="producto">
-      <img src="img/shampoo.jpg" alt="Shampoo">
-      <h3>Shampoo Revitalizante</h3>
-      <div class="info">Limpieza profunda y frescura todo el día.</div>
-    </div>
-    <div class="producto">
-      <img src="img/acondicionador.jpg" alt="Acondicionador">
-      <h3>Acondicionador Nutritivo</h3>
-      <div class="info">Cabello suave, manejable y lleno de vida.</div>
-    </div>
-    <div class="producto">
-      <img src="img/mascarilla.jpg" alt="Mascarilla">
-      <h3>Mascarilla Reparadora</h3>
-      <div class="info">Recupera la fuerza y brillo de tu cabello.</div>
-    </div>
-    <div class="producto">
-      <img src="img/spray.jpg" alt="Spray">
-      <h3>Spray Fijador</h3>
-      <div class="info">Control y estilo duradero sin maltratar.</div>
-    </div>
+    <p>Transforma tu estilo con nuestra línea capilar premium</p>
   </section>
 
-  <!-- Footer -->
+  <main>
+    <h2 style="text-align:center;">Nuestros Productos</h2>
+    <div class="gallery">
+      <div class="product" onclick="openModal('shampoo.jpg','Shampoo Brillo Urbano',
+      'Nuestro shampoo ha sido formulado con extractos naturales y vitaminas esenciales que limpian profundamente el cuero cabelludo sin resecarlo. Con cada lavado tu cabello recupera su frescura, vitalidad y un brillo urbano irresistible. Ideal para uso diario.')">
+        <img src="shampoo.jpg" alt="Shampoo Brillo Urbano">
+        <h2>Shampoo</h2>
+        <p>Limpieza profunda y brillo natural.</p>
+      </div>
+
+      <div class="product" onclick="openModal('acondicionador.jpg','Acondicionador Brillo Urbano',
+      'El acondicionador está diseñado para nutrir intensamente tu cabello, dejándolo suave, sedoso y libre de frizz. Gracias a su fórmula con aceites esenciales, proporciona hidratación duradera y facilita el peinado, protegiendo cada hebra contra el daño diario.')">
+        <img src="acondicionador.jpg" alt="Acondicionador Brillo Urbano">
+        <h2>Acondicionador</h2>
+        <p>Suavidad, hidratación y control del frizz.</p>
+      </div>
+
+      <div class="product" onclick="openModal('mascarilla.jpg','Mascarilla Nutritiva Brillo Urbano',
+      'Nuestra mascarilla nutritiva penetra profundamente en la fibra capilar para reparar los daños causados por tintes, calor y contaminación. Aporta fuerza, elasticidad y un brillo saludable. Recomendada para usar una vez por semana como tratamiento intensivo.')">
+        <img src="mascarilla.jpg" alt="Mascarilla Brillo Urbano">
+        <h2>Mascarilla Nutritiva</h2>
+        <p>Repara y fortalece desde la raíz.</p>
+      </div>
+
+      <div class="product" onclick="openModal('spray.jpg','Spray Capilar Brillo Urbano',
+      'El spray capilar es tu aliado para un acabado perfecto. Ofrece protección contra los rayos UV y la contaminación, además de dar un efecto luminoso inmediato. Su fórmula ligera no apelmaza y brinda una fijación natural, ideal para usar en cualquier momento del día.')">
+        <img src="spray.jpg" alt="Spray Brillo Urbano">
+        <h2>Spray Capilar</h2>
+        <p>Protección diaria con efecto luminoso.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal (popup) -->
+  <div id="modal" class="modal" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modal-img" src="" alt="">
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
   <footer>
-    <p>© 2025 Reflejo Urbano - Todos los derechos reservados</p>
+    <p>&copy; 2025 Reflejo Urbano - Todos los derechos reservados</p>
   </footer>
 
+  <script>
+    function openModal(img, title, text) {
+      document.getElementById("modal-img").src = img;
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-text").textContent = text;
+      document.getElementById("modal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+    function closeModalOutside(event) {
+      if (event.target.id === "modal") {
+        closeModal();
+      }
+    }
+  </script>
+
 </body>
-</html>
+</html> 
